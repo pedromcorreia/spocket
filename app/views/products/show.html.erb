@@ -5,7 +5,7 @@
   <%= @product.name %>
 </p>
 
-<%= @product.product_attachments.map do |pa| %>
+<%= @product.product_attachments.each do |pa| %>
   <% if pa.photo.url.present? %>
     <div class="field">
       <%= image_tag(pa.photo.url, alt: "image") %><br>
