@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :products do
     resources :variants
   end
+  get '/search' => 'products#search', :as => 'search_product'
+  
 
   get 'home/index'
   devise_for :views

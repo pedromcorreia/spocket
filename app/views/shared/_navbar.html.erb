@@ -6,12 +6,14 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
+
       <% if supplier_signed_in? || retailer_signed_in? %>
+        <%= current_user.email %>
         <% if supplier_signed_in? %>
-          <%= link_to 'Log out', destroy_supplier_session_path, method: :delete %>
+          <%= render 'shared/navbar_supplier' %>
         <% end %>
         <% if retailer_signed_in? %>
-          <%= link_to 'Log out', destroy_retailer_session_path, method: :delete %>
+          <%= render 'shared/navbar_retailer' %>
         <% end %>
       <% else %>
         <li class="nav-item">
@@ -19,12 +21,6 @@
         </li>
         <li class="nav-item">
           <%= link_to 'Sign In Retailer', new_retailer_session_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Register Supplier', new_supplier_registration_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Register Retailer', new_supplier_registration_path, class: 'nav-link' %>
         </li>
       <% end %>
     </ul>
