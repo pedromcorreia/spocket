@@ -3,7 +3,12 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    @products =
+      if params[:search].present?
+        Product.search params[:search], fields: [:name], match: :word_middle
+      else
+        Product.all
+      end
   end
 
   # GET /products/1 or /products/1.json
@@ -72,7 +77,6 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name,
                                     product_attachments_attributes:
-                                    [:id, :product_id, :photo]
-                                   )
+                                    %i[id product_id photo])
   end
 end
