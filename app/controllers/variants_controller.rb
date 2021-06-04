@@ -1,6 +1,6 @@
 class VariantsController < ApplicationController
   before_action :set_product
-  before_action :set_variant, only: %i[ show edit update destroy ]
+  before_action :set_variant, only: %i[show edit update destroy]
 
   # GET /variants or /variants.json
   def index

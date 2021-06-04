@@ -16,6 +16,14 @@
     <%= form.text_field :name %>
   </div>
 
+  <%= form.fields_for :product_attachments do |p| %>
+    <div class="field">
+      <%= p.label :photo %><br>
+      <%= p.file_field :photo, :multiple => true, name:
+        "product_attachments[photo][]" %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

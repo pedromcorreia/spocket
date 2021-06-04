@@ -5,6 +5,14 @@
   <%= @product.name %>
 </p>
 
+<%= @product.product_attachments.map do |pa| %>
+  <% if pa.photo.url.present? %>
+    <div class="field">
+      <%= image_tag(pa.photo.url, alt: "image") %><br>
+    </div>
+  <% end %>
+<% end %>
+
 <%= link_to 'Variants', product_variants_path(@product) %> |
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
