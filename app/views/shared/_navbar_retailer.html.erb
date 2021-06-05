@@ -1,4 +1,13 @@
 <li class="nav-item">
   <%= link_to 'Search Products', search_product_path, class: 'nav-link' %>
 </li>
+<% if current_user.store %>
+  <li class="nav-item">
+    <%= link_to 'My store', current_user.store, class: 'nav-link' %>
+  </li>
+<% else %>
+  <li class="nav-item">
+    <%= link_to 'Create store', new_store_path, class: 'nav-link' %>
+  </li>
+<% end %>
 <%= link_to '| Log out', destroy_retailer_session_path, method: :delete %>

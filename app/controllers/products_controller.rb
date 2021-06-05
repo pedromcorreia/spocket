@@ -1,19 +1,26 @@
 class ProductsController < ApplicationController
-  load_and_authorize_resource
-  before_action :set_product, only: %i[show edit update destroy]
+  #load_and_authorize_resource
+  before_action :set_product, only: %i[show edit update destroy import]
 
   # GET /products or /products.json
   def index
-    Product.all
+    Product.original
   end
 
   def search
     @products =
       if params[:search].present?
-        Product.search params[:search], fields: [:name], match: :word_middle
+        Product.search(params[:search], fields: [:name], match: :word_middle, where: { store_id: nil })
       else
-        Product.all
+        Product.original
       end
+  end
+
+  def import
+    if current_user.store
+      product_dup = @product.dup
+      product_dup.update(store: current_user.store)
+    end
   end
 
   # GET /products/1 or /products/1.json
@@ -54,7 +61,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1 or /products/1.json
   def update
     respond_to do |format|
-      if @product.update(product_params.merge(supplier: current_user))
+      if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
