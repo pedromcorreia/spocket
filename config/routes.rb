@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   resources :stores, except: [:index]
   resources :product_attachments
   devise_for :suppliers
