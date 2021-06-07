@@ -11,14 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :file %>
-    <%= form.text_field :file %>
+    <%= form.text_field :file, class:"form-control" , required:true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :product_id %>
-    <%= form.text_field :product_id %>
+    <%= form.text_field :product_id, class:"form-control" , required:true %>
   </div>
 
   <div class="actions">

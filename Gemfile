@@ -34,6 +34,7 @@ gem 'cancancan'
 gem 'shopify_api'
 gem 'rest-client'
 gem 'rack-cors'
+gem 'bootstrap_sb_admin_base_v2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

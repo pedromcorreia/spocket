@@ -11,24 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :kind %>
-    <%= form.select :kind, IntegrationStore.kinds %>
+    <%= form.select :kind, IntegrationStore.kinds, class:"form-control" , required:true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :store_name %>
-    <%= form.text_field :store_name %>
+    <%= form.text_field :store_name, class:"form-control" , required:true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :api_key %>
-    <%= form.text_field :api_key %>
+    <%= form.text_field :api_key, class:"form-control" , required:true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :password %>
-    <%= form.text_field :password %>
+    <%= form.text_field :password, class:"form-control" , required:true %>
   </div>
 
   <div class="actions">

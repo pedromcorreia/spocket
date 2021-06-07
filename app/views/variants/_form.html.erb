@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :size %>
-    <%= form.text_field :size %>
+    <%= form.text_field :size, class:"form-control" , required:true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :price %>
-    <%= form.text_field :price %>
+    <%= form.text_field :price, class:"form-control" , required:true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :inventory %>
-    <%= form.number_field :inventory %>
+    <%= form.number_field :inventory, class:"form-control" , required:true %>
   </div>
 
   <div class="actions">
