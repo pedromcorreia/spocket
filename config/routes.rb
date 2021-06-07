@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :integration_stores, except: [:edit, :show]
+  resources :integration_stores, only: [:index, :new, :create]
   resources :orders
   resources :stores, except: [:index]
   resources :product_attachments

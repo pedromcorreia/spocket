@@ -16,6 +16,11 @@
     <%= form.text_field :name %>
   </div>
 
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
   <%= form.fields_for :product_attachments do |p| %>
     <div class="field">
       <%= p.label :photo %><br>

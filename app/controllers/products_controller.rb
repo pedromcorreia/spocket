@@ -89,7 +89,7 @@ class ProductsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def product_params
-    params.require(:product).permit(:name,
+    params.require(:product).permit(:name, :description,
                                     product_attachments_attributes:
                                     %i[id product_id photo])
   end
