@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :integration_stores
-  resources :integrations
+  resources :integration_stores, except: [:edit, :show]
   resources :orders
   resources :stores, except: [:index]
   resources :product_attachments
@@ -10,7 +9,7 @@ Rails.application.routes.draw do
     resources :variants
   end
   get '/search' => 'products#search', :as => 'search_product'
-  post '/import_product' => 'products#import', :as => 'import_product'
+  post '/sync_integration_stores' => 'integration_stores#sync', :as => 'sync_integration_stores'
 
   get 'home/index'
   devise_for :views

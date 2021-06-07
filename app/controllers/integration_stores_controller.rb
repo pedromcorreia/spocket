@@ -1,5 +1,5 @@
 class IntegrationStoresController < ApplicationController
-  before_action :set_integration_store, only: %i[ show edit update destroy ]
+  before_action :set_integration_store, only: %i[ show destroy sync]
 
   # GET /integration_stores or /integration_stores.json
   def index
@@ -15,8 +15,8 @@ class IntegrationStoresController < ApplicationController
     @integration_store = IntegrationStore.new
   end
 
-  # GET /integration_stores/1/edit
-  def edit
+  def sync
+    ::Integrations::Integrations.new(current_user.id, @integration_store.kind).call
   end
 
   # POST /integration_stores or /integration_stores.json
@@ -29,19 +29,6 @@ class IntegrationStoresController < ApplicationController
         format.json { render :show, status: :created, location: @integration_store }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @integration_store.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /integration_stores/1 or /integration_stores/1.json
-  def update
-    respond_to do |format|
-      if @integration_store.update(integration_store_params)
-        format.html { redirect_to @integration_store, notice: "Integration store was successfully updated." }
-        format.json { render :show, status: :ok, location: @integration_store }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @integration_store.errors, status: :unprocessable_entity }
       end
     end
