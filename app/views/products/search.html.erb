@@ -30,8 +30,8 @@
           </h5>
           <p class="card-text">
             <%= p.description %>
-            <%= p.id %>
-            <%= p.variants.pluck(:price).sum(0.0) / p.variants.pluck(:price).sum(0.0) %>
+            <br>
+            <%= "#{p.variants&.first&.price || 0.0} USD" %>
             <% if current_user.store %>
               <%= button_to "Import to my store", import_product_path(id: p.id), class: "btn btn-primary" %>
             <% end %>
