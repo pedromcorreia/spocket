@@ -5,14 +5,15 @@
   <li class="nav-item">
     <%= link_to 'My store', current_user.store, class: 'nav-link' %>
   </li>
+  <li class="nav-item">
+    <%= link_to 'My orders', orders_path, class: 'nav-link' %>
+  </li>
 <% else %>
   <li class="nav-item">
     <%= link_to 'Create store', new_store_path, class: 'nav-link' %>
   </li>
 <% end %>
-<li class="nav-item">
-  <%= link_to 'My orders', orders_path, class: 'nav-link' %>
-</li>
+
 
 <li class="nav-item">
   <%= link_to '| Log out', destroy_retailer_session_path, method: :delete, class: 'nav-link' %>

@@ -17,10 +17,11 @@ class ProductsController < ApplicationController
   end
 
   def import
-    if current_user.store
-      product_dup = @product.dup
-      product_dup.update(store: current_user.store)
-    end
+    return unless current_user.store
+
+    product_dup = @product.dup
+    product_dup.update(store: current_user.store)
+    redirect_to current_user.store
   end
 
   # GET /products/1 or /products/1.json

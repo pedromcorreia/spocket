@@ -8,9 +8,6 @@
     <ul class="navbar-nav">
 
       <% if supplier_signed_in? || retailer_signed_in? %>
-        <li class="nav-item">
-          <%= current_user.type %>
-        </li>
         <% if supplier_signed_in? %>
           <%= render 'shared/navbar_supplier' %>
         <% end %>

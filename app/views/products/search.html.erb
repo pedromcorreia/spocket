@@ -1,40 +1,47 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Products</h1>
-<%= form_tag(search_product_path, :method => "get",
-    class: 'navbar-form navbar-left') do %>
-  <div class="input-group">
-    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
-    <div class="input-group-btn">
-      <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
+<div class="row">
+  <%= form_tag(search_product_path, :method => "get", class: 'navbar-form navbar-left') do %>
+    <div class="input-group">
+      <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+      <div class="input-group-btn">
+        <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
-<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<br>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.id %></td>
-        <td>
-          <%= button_to "Import", import_product_path(id: product.id) %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <% @products.each do |p| %>
+    <div class="col-md-2">
+      <div class="card">
+        <% if p.product_attachments.exists? %>
+          <%= image_tag(p.product_attachments.first.photo.url, class: "card-img-top") %><br>
+        <% else %>
+          <%= image_tag("/undefined.jpg", class: "card-img-top") %><br>
+        <% end %>
 
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= p.name %>
+          </h5>
+          <p class="card-text">
+            <%= p.description %>
+            <%= p.id %>
+            <%= p.variants.pluck(:price).sum(0.0) / p.variants.pluck(:price).sum(0.0) %>
+            <% if current_user.store %>
+              <%= button_to "Import to my store", import_product_path(id: p.id), class: "btn btn-primary" %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>
 <br>
 
 <%= link_to 'New Product', new_product_path %>
