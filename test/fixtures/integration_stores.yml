@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kind: MyString
+  store_name: MyString
+  api_key: MyString
+  password: MyString
+  user: one
+
+two:
+  kind: MyString
+  store_name: MyString
+  api_key: MyString
+  password: MyString
+  user: two

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @integration.type %>
+</p>
+
+<p>
+  <strong>Store name:</strong>
+  <%= @integration.store_name %>
+</p>
+
+<p>
+  <strong>Api key:</strong>
+  <%= @integration.api_key %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @integration.password %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @integration.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_integration_path(@integration) %> |
+<%= link_to 'Back', integrations_path %>

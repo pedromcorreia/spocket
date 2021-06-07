@@ -31,6 +31,9 @@ gem 'devise'
 gem 'carrierwave'
 gem 'searchkick'
 gem 'cancancan'
+gem 'shopify_api'
+gem 'rest-client'
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

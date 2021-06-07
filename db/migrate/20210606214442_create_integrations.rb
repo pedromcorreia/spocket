@@ -1,0 +1,13 @@
+class CreateIntegrations < ActiveRecord::Migration[6.0]
+  def change
+    create_table :integrations do |t|
+      t.string :type
+      t.string :store_name
+      t.string :api_key
+      t.string :password
+      t.references :user, null: false, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end

@@ -1,0 +1,37 @@
+<%= form_with(model: integration_store, local: true) do |form| %>
+  <% if integration_store.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(integration_store.errors.count, "error") %> prohibited this integration_store from being saved:</h2>
+
+      <ul>
+        <% integration_store.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :kind %>
+    <%= form.select :kind, IntegrationStore.kinds %>
+  </div>
+
+  <div class="field">
+    <%= form.label :store_name %>
+    <%= form.text_field :store_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :api_key %>
+    <%= form.text_field :api_key %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

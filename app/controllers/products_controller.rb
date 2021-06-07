@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    Product.original
+    @products = Product.original
   end
 
   def search
